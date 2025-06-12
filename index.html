@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Cumple Giara 💙</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://i.pinimg.com/originals/d3/38/95/d338958ff2bc814159af16dffa99bf00.gif') repeat;
+      background-size: cover;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin: 0 20px 20px;
+      max-width: 600px;
+    }
+
+    button {
+      background-color: #1c2d5c;
+      color: #ffffff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      z-index: 2;
+    }
+
+    button:hover {
+      background-color: #2f468a;
+    }
+
+    .horoscope {
+      margin-top: 30px;
+      font-size: 1.1em;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    .show {
+      opacity: 1;
+    }
+
+    .heart {
+      position: absolute;
+      color: #69c1ff;
+      font-size: 20px;
+      animation: float 4s ease-in-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Feliz Cumpleaños, Giara ✨</h1>
+  <p>
+    Ya que me haces sonreír siempre y supongo que a los demás tambien...  
+    Pensé que hoy merecías una sonrisa también.  
+    Gracias por esa pulsera tan especial, la llevo conmigo con cariño.  
+    Que este nuevo año te devuelva todo lo bueno que das, porque en verdad lo mereces.💙
+  </p>
+  <button onclick="abrirRegalo()">Abrí tu regalo</button>
+
+  <div id="horoscopo" class="horoscope">
+    ♊ <strong>Horóscopo Géminis:</strong> Hoy los astros conspiran a tu favor. Vas a brillar más de lo que ya brillás.  
+    Se vienen sorpresas lindas, risas inesperadas y muchos momentos que vas a guardar para siempre 💫
+  </div>
+
+  <audio id="song" src="Poison tree (mp3cut.net).mp3"></audio>
+
+  <script>
+    function abrirRegalo() {
+      const audio = document.getElementById("song");
+      const horoscopo = document.getElementById("horoscopo");
+
+      audio.play().catch(() => {
+        alert("Dale permiso al navegador para reproducir sonido :)");
+      });
+
+      horoscopo.classList.add("show");
+
+      // Corazones flotantes
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💙";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }
+    }
+  </script>
+</body>
+</html>
